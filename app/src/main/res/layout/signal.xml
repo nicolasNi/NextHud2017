@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        android:layout_width="50dp" 
+        android:layout_height="25dp"
+        xmlns:android="http://schemas.android.com/apk/res/android" > 
+	   <ImageView
+	    android:id="@+id/signal1"
+	    android:layout_width="29dp"
+	    android:layout_height="20dp"
+	    android:layout_marginLeft="5dp"
+	    android:src="@drawable/stat_sys_signal_0_fully" />
+
+	  <TextView
+	      android:id="@+id/singalText"
+	      android:layout_width="20dp"
+	      android:layout_height="30dp" 
+	      android:layout_marginLeft="30dp" 
+	      android:singleLine="true"
+	      android:layout_gravity="bottom"
+	      android:text="3G" 
+	      android:textColor="#FFFFFF"
+	      android:textSize="15sp" />
+ 
+  </LinearLayout>

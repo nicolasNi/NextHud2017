@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" >
+	    <RelativeLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="left" >  
+	        	<TextView 
+	        	android:rotationY="180"
+	            android:id="@+id/tv_username"  
+	            android:layout_alignParentRight="true" 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"  
+	            android:textSize="17sp"
+	            android:paddingTop="10dp"
+	            android:text="我"
+	            android:gravity="center"
+	            android:textColor="#ffffff"/>
+	        
+ 				<TextView 
+ 				android:rotationY="180"
+	            android:id="@+id/tv_chatcontent"  
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_toLeftOf="@id/tv_username"
+	         	android:background="@drawable/chatfrom_bg" 
+	            android:textSize="15sp" 
+	            android:textColor="#ff000000" 
+	            android:gravity="left|center"
+	            android:minHeight="38dp" 
+	            android:lineSpacingExtra="0dp"
+	            android:focusable="true"/>   
+	                  
+ 			
+	           
+	        
+	    </RelativeLayout>
+
+</LinearLayout>

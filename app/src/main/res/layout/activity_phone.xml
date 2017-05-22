@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:orientation="vertical" 
+    android:background="#000000" >
+  
+     <ListView
+        android:id="@+id/phonebookList"
+        android:layout_width="390dip"
+         android:layout_x="100dip" 
+	 	android:layout_y="56dip"  
+        android:layout_height="140dp" 
+        android:scrollbarSize="5dp"
+        android:scrollbars ="none" 
+        android:divider="@color/item_focuse" 
+        android:dividerHeight="0.1dp" >
+    </ListView>
+    
+  
+       <ImageView
+	    android:id="@+id/p_left"
+	    android:layout_width="30dp"
+	    android:layout_height="30dp"
+	    android:layout_x="90dip" 
+	 	android:layout_y="204dip" 
+	    android:src="@drawable/left" />
+       
+        <TextView
+		android:id="@+id/p_t2"
+		android:layout_width="40dip"
+		android:layout_height="25dip"
+		android:rotationY="180"
+		android:layout_x="120dip"  
+		android:layout_y="205dip" 
+		android:text="查找"
+		android:textSize="20sp" 
+		 android:textColor="#FFFFFF"
+       /> 
+       
+       <ImageView
+	    android:id="@+id/p_right"
+	    android:layout_width="30dp"
+	    android:layout_height="30dp"
+	    android:layout_x="460dip" 
+	 	android:layout_y="204dip" 
+	    android:src="@drawable/right" />
+    
+     
+        <TextView
+		android:id="@+id/p_t3"
+		android:layout_width="40dip"
+		android:layout_height="25dip"
+		android:rotationY="180"
+		android:layout_x="420dip"  
+		android:layout_y="205dip" 
+		android:text="返回"
+		android:textSize="20sp" 
+		 android:textColor="#FFFFFF"
+       /> 
+        
+</AbsoluteLayout>

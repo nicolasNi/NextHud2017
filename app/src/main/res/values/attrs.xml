@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+    <declare-styleable name="SingalView"> 
+        <attr name="Singal1Src" format="reference|integer"></attr>
+        <attr name="Singal2Src" format="reference|integer"></attr>
+        <attr name="Singal3Src" format="reference|integer"></attr>
+        <attr name="Text" format="reference|string"></attr> 
+    </declare-styleable> 
+    <declare-styleable name="GifView">  
+        <attr name="gif" format="reference" />  
+        <attr name="paused" format="boolean" />  
+    </declare-styleable>  
+    <declare-styleable name="CustomTheme">  
+        <attr name="gifViewStyle" format="reference" />  
+    </declare-styleable>  
+</resources>

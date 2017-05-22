@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.lt.nexthud2017.music.MusicViewModel"/>
+    </data>
+<AbsoluteLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:orientation="vertical" >
+
+    <AbsoluteLayout
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginLeft="16dp"
+        android:layout_x="80dip"
+        android:layout_y="58dip"
+        tools:ignore="RtlHardcoded" >
+
+        <ImageView
+            android:id="@+id/micphone"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_x="15dip"
+            android:layout_y="8dip"
+            android:src="@drawable/micphone" />
+
+        <EditText
+            android:id="@+id/edt_search"
+            android:layout_width="330dip"
+            android:layout_height="48dp"
+            android:layout_x="40dip"
+            android:layout_y="5dip"
+            android:background="@null"
+            android:drawablePadding="8dp"
+            android:gravity="left"
+            android:hint="搜索歌曲，歌手等"
+            android:rotationY="180"
+            android:singleLine="true"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:text="@={viewModel.searchKey}"
+            tools:ignore="RtlCompat,HardcodedText,RtlHardcoded" />
+
+        <ImageView
+            android:id="@+id/search"
+            android:layout_width="24dp"
+            android:layout_height="28dp"
+            android:layout_x="370dip"
+            android:layout_y="7dip"
+            android:onClick="@{() -> viewModel.searchMusics()}"
+            android:src="@drawable/search" />
+
+        <View
+            android:layout_width="390dip"
+            android:layout_height="0.5dp"
+            android:layout_marginRight="16dp"
+            android:layout_x="5dip"
+            android:layout_y="37dip"
+            android:background="#FFFFFF" />
+    </AbsoluteLayout>
+
+    <ListView
+        android:id="@+id/lv_search_list"
+        app:adapter="@{ viewModel.musicAdapter }"
+        android:layout_width="390dip"
+        android:layout_height="100dp"
+        android:layout_x="80dip"
+        android:layout_y="100dip"
+        android:divider="@color/item_focuse"
+        android:dividerHeight="0.1dp"
+        android:fadeScrollbars="false"
+        android:scrollbarSize="5dp"
+        android:scrollbars ="none"   >
+    </ListView>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="79dp"
+        android:layout_y="223dp"
+        android:text="Previous"
+        android:onClick="@{() -> viewModel.moveToPreviousSong()}"/>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="196dp"
+        android:layout_y="227dp"
+        android:text="play"
+        android:onClick="@{() -> viewModel.playMusic()}"/>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="309dp"
+        android:layout_y="230dp"
+        android:text="Next"
+        android:onClick="@{() -> viewModel.moveToNextSong()}"/>
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="410dp"
+        android:layout_y="235dp"
+        android:text="history"
+        android:onClick="@{() -> viewModel.pressCenter()}"/>
+</AbsoluteLayout>
+</layout>

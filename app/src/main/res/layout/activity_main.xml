@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#000000" >
+    <FrameLayout
+        android:id="@+id/fl_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"  >
+        <fragment
+            android:id="@+id/musicFragment"
+            android:name="com.lt.nexthud2017.music.MusicFragment"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent" />
+    </FrameLayout>
+</LinearLayout>

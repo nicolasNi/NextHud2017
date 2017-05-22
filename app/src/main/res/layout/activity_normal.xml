@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#000000" > 
+  		
+      <TextView
+                android:id="@+id/dbg"
+                android:layout_width="200dip"
+                android:layout_height="200dip"
+                android:text=""
+                android:layout_x="50dip" 
+				android:layout_y="40dip"
+                /> 
+                
+       <TextView
+				android:id="@+id/hud_currentTime_nor"
+				android:rotationY="180"
+				android:layout_width="70dip"
+				android:layout_height="50dip"
+				android:layout_x="270dip" 
+				android:layout_y="40dip"
+				android:textSize="18sp" 
+				android:textColor="#B0E9FF"  
+		/>  
+                
+      <ImageView
+	    android:id="@+id/signal"
+	     android:rotationY="180"
+	    android:layout_width="29dp"
+	    android:layout_height="20dp"
+	    android:layout_x="350dip" 
+		android:layout_y="40dip"
+	    android:src="@drawable/stat_sys_signal_0_fully" />
+
+      <!-- 
+	  <TextView
+	      android:id="@+id/singalText"
+	      android:layout_width="20dp"
+	      android:layout_height="30dp" 
+	      android:layout_marginLeft="30dp" 
+	      android:singleLine="true" 
+	      android:layout_x="375dip" 
+		  android:layout_y="13dip"
+		  android:rotationY="180"
+	      android:text="3G" 
+	      android:textColor="#FFFFFF"
+	      android:textSize="14sp" />
+	       -->
+	  
+	   <ImageView
+	    android:id="@+id/gps"
+	    android:layout_width="25dp"
+	    android:layout_height="25dp"
+	    android:layout_x="398dip" 
+		android:layout_y="40dip"
+	    android:src="@drawable/gps" 
+	    android:visibility="gone" />
+	   
+	   <ImageView
+	    android:id="@+id/music"
+	    android:layout_width="25dp"
+	    android:layout_height="25dp"
+	    android:layout_x="420dip" 
+	    android:visibility="gone" 
+		android:layout_y="40dip"
+	    android:src="@drawable/music" />
+	   
+	   <ImageView
+	    android:id="@+id/weixin"
+	    android:layout_width="25dp"
+	    android:layout_height="25dp"
+	    android:layout_x="445dip" 
+	    android:visibility="gone" 
+		android:layout_y="40dip"
+	    android:src="@drawable/weixin" />
+	   
+	    <ImageView
+	    android:id="@+id/phone"
+	    android:rotationY="180"
+	    android:layout_width="25dp"
+	    android:layout_height="25dp"
+	    android:layout_x="390dip" 
+		android:layout_y="40dip"
+	    android:visibility="gone" 
+	    android:src="@drawable/phone1" />
+	   
+	   
+	
+    <TextView
+	    android:id="@+id/hud_time_nor"
+	    android:rotationY="180"
+	  android:layout_width="100dip"
+	    android:layout_height="50dip"
+	    android:layout_x="177dip" 
+		android:layout_y="167dip" 
+		android:textSize="25sp"  
+		 android:textColor="#FF7F00" 
+     /> 
+      
+    <TextView
+	    android:id="@+id/hud_time1_nor"
+	    android:rotationY="180"
+	    android:layout_width="100dip"
+	    android:layout_height="50dip"
+	    android:layout_x="185dip" 
+		android:layout_y="195dip" 
+		android:text="km/h"
+		android:textSize="23sp"  
+		 android:textColor="#FF7F00" 
+     /> 
+      
+   <ImageView
+	    android:id="@+id/hud_roadImage_nor"
+	    android:rotationY="180"
+	    android:layout_width="270dip"
+	    android:layout_height="110dip"
+	    android:layout_x="126dip" 
+		android:layout_y="100dip"
+     />  
+     
+
+    
+    <!-- ///////////////////////////////////////////////////////////////////////////////////////////// -->
+    
+    
+    
+     <ImageView
+	    android:id="@+id/hud_msg_line"
+	    android:rotationY="180"
+	    android:layout_width="1dip"
+	    android:layout_height="135dip"
+	    android:layout_x="260dip" 
+		android:layout_y="90dip"
+		android:visibility="gone" 
+     />  
+      
+    <TextView
+	    android:id="@+id/hud_time_wx"
+	    android:rotationY="180"
+	  	android:layout_width="100dip"
+	    android:layout_height="50dip"
+	    android:layout_x="77dip" 
+		android:layout_y="167dip" 
+		android:textSize="25sp"  
+		 android:textColor="#FF7F00" 
+		 android:visibility="gone" 
+     /> 
+      
+    <TextView
+	    android:id="@+id/hud_time1_wx"
+	    android:rotationY="180"
+	    android:layout_width="100dip"
+	    android:layout_height="50dip"
+	    android:layout_x="85dip" 
+		android:layout_y="195dip" 
+		android:text="km/h"
+		android:textSize="23sp"  
+		 android:textColor="#FF7F00" 
+		 android:visibility="gone" 
+     /> 
+      
+   <ImageView
+	    android:id="@+id/hud_roadImage_wx"
+	    android:rotationY="180"
+	    android:layout_width="270dip"
+	    android:layout_height="110dip"
+	    android:layout_x="26dip" 
+		android:layout_y="100dip"
+		android:visibility="gone" 
+     />  
+   
+     <ImageView
+	    android:id="@+id/hud_msg_logo"
+	    android:rotationY="180"
+	    android:layout_width="30dip"
+	    android:layout_height="30dip"
+	    android:layout_x="460dip" 
+		android:layout_y="80dip"
+		android:visibility="gone" 
+     />
+     
+       <TextView
+	    android:id="@+id/hud_msg_title"
+	    android:rotationY="180"
+	    android:layout_width="140dip"
+	    android:layout_height="25dip"
+	     android:textSize="17sp" 
+	    android:layout_x="310dip" 
+		android:layout_y="90dip" 
+		android:visibility="gone"
+		android:textColor="#FFFFFF" 
+	    android:gravity="center_horizontal" 
+     /> 
+     
+       <TextView
+	    android:id="@+id/hud_msg_id"
+	    android:rotationY="180"
+	    android:layout_width="140dip"
+	    android:layout_height="25dip"
+	     android:textSize="17sp" 
+	    android:layout_x="310dip" 
+		android:layout_y="90dip" 
+		android:visibility="gone"
+		android:textColor="#FFFFFF" 
+	    android:gravity="center_horizontal" 
+     /> 
+     
+     <TextView
+	    android:id="@+id/hud_msg_context"
+	    android:rotationY="180"
+	    android:layout_width="220dip"
+	    android:layout_height="140dip"
+	    android:textSize="15sp" 
+	    android:layout_x="310dip" 
+		android:layout_y="120dip" 
+		android:visibility="gone" 
+	    android:textColor="#FFFFFF" 
+	    android:gravity="center_horizontal"
+     /> 
+     
+     
+     
+      
+     
+     
+       <TextView
+	    android:id="@+id/hud_msg_type" 
+	    android:layout_width="10dip"
+	    android:layout_height="10dip"
+	     android:textSize="13sp" 
+	    android:layout_x="20dip" 
+		android:layout_y="20dip" 
+		android:visibility="gone" 
+		android:textColor="#FFFFFF"  
+     /> 
+     
+        <TextView
+	    android:id="@+id/hud_msg_location" 
+	    android:layout_width="10dip"
+	    android:layout_height="10dip"
+	     android:textSize="13sp" 
+	    android:layout_x="20dip" 
+		android:layout_y="20dip" 
+		android:visibility="gone" 
+		android:textColor="#FFFFFF"  
+     /> 
+      
+         <ImageView
+	    android:id="@+id/hud_msg_left"
+	    android:rotationY="180"
+	    android:layout_width="40dip"
+	    android:layout_height="40dip"
+	    android:layout_x="480dip" 
+		android:layout_y="195dip"
+		android:visibility="gone" 
+     />
+         
+      <ImageView
+	    android:id="@+id/hud_msg_right"
+	    android:rotationY="180"
+	    android:layout_width="40dip"
+	    android:layout_height="40dip"
+	    android:layout_x="270dip" 
+		android:layout_y="195dip"
+		android:visibility="gone" 
+     />
+      
+      <TextView
+	    android:id="@+id/hud_msg_left_txt"
+	    android:rotationY="180"
+	    android:layout_width="60dip"
+	    android:layout_height="25dip"
+	     android:textSize="13sp" 
+	    android:layout_x="430dip" 
+		android:layout_y="205dip" 
+		android:visibility="gone" 
+		android:textColor="#FFFFFF"   
+     /> 
+     
+       <TextView
+	    android:id="@+id/hud_msg_right_txt"
+	    android:rotationY="180"
+	    android:layout_width="60dip"
+	    android:layout_height="25dip"
+	     android:textSize="13sp" 
+	    android:layout_x="290dip" 
+		android:layout_y="205dip" 
+		android:visibility="gone" 
+		android:textColor="#FFFFFF"  
+     /> 
+     
+     <LinearLayout
+          android:id="@+id/normal_wait"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dip" 
+        android:gravity="center"
+        android:visibility="gone" 
+        android:orientation="vertical" >
+
+       <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dip"
+        android:indeterminateDrawable="@drawable/animdraw2"
+        android:indeterminateDuration="1500" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10.0dip"
+            android:gravity="center"
+            android:paddingLeft="25.0dip"
+            android:paddingRight="25.0dip"
+            android:text="正在努力加载中，请稍候"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+</AbsoluteLayout>

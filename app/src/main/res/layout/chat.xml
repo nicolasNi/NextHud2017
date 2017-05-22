@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/rl_layout"
+        android:layout_width="420dp"
+        android:layout_height="30dp"
+        android:layout_x="80dp"
+        android:layout_y="50dp"
+        android:background="#000000" >
+
+        <TextView
+            android:id="@+id/chatTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:rotationY="180" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/chatListview"
+        android:layout_width="385dp"
+        android:layout_height="160dp"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginTop="10.0dip"
+        android:layout_x="80dp"
+        android:layout_y="110dp"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:dividerHeight="5dp"
+        android:scrollbars="none" />
+
+</AbsoluteLayout>

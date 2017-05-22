@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/selector_ltem"> 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="33dp"
+        android:layout_marginLeft="0dp"
+        tools:ignore="RtlHardcoded" >
+             <ImageView
+			    android:id="@+id/gps"
+			     android:gravity="right"
+			    android:layout_width="25dp"
+			    android:layout_height="25dp" 
+			    android:src="@drawable/gps" /> 
+          <TextView
+              android:rotationY="180"
+              android:id="@+id/tv_name"
+              android:layout_width="230dp"
+              android:layout_height="wrap_content"  
+              android:singleLine="true" 
+              android:textSize="19sp"  /> 
+    </LinearLayout>
+</LinearLayout>

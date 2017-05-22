@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/selector_ltem"> 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginLeft="20dp"
+         android:layout_marginRight="20dp"  > 
+          <TextView
+              android:rotationY="180"
+              android:id="@+id/tv_bluetooth_name"
+              android:layout_width="190dp"
+              android:layout_height="wrap_content" 
+              android:gravity="left"
+              android:singleLine="true" 
+              android:textSize="17sp"  /> 
+          
+          <TextView
+              android:rotationY="180"
+              android:id="@+id/tv_bluetooth_nav"
+              android:layout_width="70dp"
+              android:layout_height="wrap_content" 
+              android:gravity="left"
+              android:singleLine="true" 
+              android:textSize="17sp"  /> 
+          
+    </LinearLayout>
+</LinearLayout>

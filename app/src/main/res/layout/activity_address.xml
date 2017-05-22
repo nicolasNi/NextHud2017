@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:orientation="vertical" >
+
+    <AbsoluteLayout
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginLeft="16dp"
+        android:layout_x="80dip"
+        android:layout_y="58dip"
+        tools:ignore="RtlHardcoded" >
+
+        <ImageView
+            android:id="@+id/a_micphone"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_x="15dip"
+            android:layout_y="8dip"
+            android:src="@drawable/dest" />
+
+        <EditText
+            android:id="@+id/address_search"
+            android:layout_width="330dip"
+            android:layout_height="48dp"
+            android:layout_x="40dip"
+            android:layout_y="5dip"
+            android:background="@null"
+            android:drawablePadding="8dp"
+            android:gravity="left"
+            android:hint="搜索地址"
+            android:rotationY="180"
+            android:singleLine="true"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            tools:ignore="RtlCompat,HardcodedText,RtlHardcoded" />
+
+        <ImageView
+            android:id="@+id/a_search"
+            android:layout_width="24dp"
+            android:layout_height="28dp"
+            android:layout_x="370dip"
+            android:layout_y="7dip"
+            android:src="@drawable/search" />
+
+        <View
+            android:layout_width="390dip"
+            android:layout_height="0.5dp"
+            android:layout_marginRight="16dp"
+            android:layout_x="5dip"
+            android:layout_y="37dip"
+            android:background="#FFFFFF" />
+    </AbsoluteLayout>
+
+    <ListView
+        android:id="@+id/address_search_list"
+        android:layout_width="390dip"
+        android:layout_height="100dp"
+        android:layout_x="80dip"
+        android:layout_y="100dip"
+        android:divider="@color/item_focuse"
+        android:dividerHeight="0.1dp"
+        android:fadeScrollbars="false"
+        android:scrollbarSize="5dp" 
+        android:scrollbars="none"  >
+    </ListView>
+
+    
+
+
+
+</AbsoluteLayout>

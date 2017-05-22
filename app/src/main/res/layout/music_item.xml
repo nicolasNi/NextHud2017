@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="music"
+            type="com.lt.nexthud2017.music.Music"/>
+    </data>
+<LinearLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/selector_ltem" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="33dp"
+        android:layout_marginLeft="10dp"
+        tools:ignore="RtlHardcoded" >
+
+        <TextView
+            android:id="@+id/tv_search_list_airtist"
+            android:text="@{music.airtistName}"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:rotationY="180"
+            android:singleLine="true"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/tv_search_list_title"
+            android:text="@{music.musciName}"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:rotationY="180"
+            android:singleLine="true"
+            android:textSize="19sp" />
+    </LinearLayout>
+
+</LinearLayout>
+</layout>

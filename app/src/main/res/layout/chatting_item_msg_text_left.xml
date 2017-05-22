@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" >
+	    <RelativeLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="left" >   
+	        	<TextView 
+	        	android:rotationY="180"
+	            android:id="@+id/tv_username"   
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"  
+	            android:textSize="17sp"
+	            android:paddingTop="10dp"
+	            android:text="好友"
+	            android:gravity="center"
+	            android:textColor="#ffffff"/>
+	        
+ 			  <TextView 
+ 			    android:rotationY="180"
+	            android:id="@+id/tv_chatcontent" 
+	            android:layout_toRightOf="@id/tv_username" 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:background="@drawable/chatto_bg" 
+	          	style="@style/chat_content_date_style"/>   
+	                  
+	    </RelativeLayout>
+
+</LinearLayout>

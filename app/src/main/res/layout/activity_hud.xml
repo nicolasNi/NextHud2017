@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    	android:id="@+id/hud_view"
+    android:background="#000000" >
+      
+	<TextView
+	android:id="@+id/hud_roadName"
+	android:rotationY="180"
+	android:layout_width="200dip"
+	android:layout_height="100dip"
+	android:gravity="center_horizontal"
+	android:layout_x="150dip" 
+	android:layout_y="185dip"
+	android:textSize="18sp" 
+	 android:textColor="#FFFFFF"
+	/>  
+	<com.amap.api.navi.view.DriveWayView
+		 android:id="@+id/hud_roadPane"
+		 android:rotationY="180"
+		 android:layout_width="200dip"
+		 android:layout_height="40dip"
+		 android:layout_x="150dip" 
+		 android:layout_y="205dip"
+	 /> 
+		 
+	<ImageView
+		 android:id="@+id/hud_nextImage"
+		 android:rotationY="180"
+		 android:layout_width="35dip"
+		 android:layout_height="35dip"
+		 android:layout_x="90dip" 
+		 android:layout_y="115dip"
+	 /> 
+	 
+	 <TextView
+    android:id="@+id/hud_dbg" 
+    android:layout_width="310dip"
+    android:layout_height="160dip"
+    android:layout_x="160dip" 
+    android:gravity="center_horizontal"
+	android:layout_y="110dip" 
+	android:textSize="22sp" 
+	 android:textColor="#FFFFFF"
+	/> 
+		     
+    <TextView
+    android:id="@+id/hud_nextRoadName"
+    android:rotationY="180"
+    android:layout_width="110dip"
+    android:layout_height="60dip"
+    android:layout_x="45dip" 
+    android:gravity="center_horizontal"
+	android:layout_y="178dip" 
+	android:textSize="18sp" 
+	 android:textColor="#FFFFFF"
+	/> 
+	
+    <TextView
+    android:id="@+id/hud_distance"
+    android:rotationY="180"
+    android:layout_width="100dip"
+    android:layout_height="100dip" 
+    android:layout_x="50dip" 
+ 	android:layout_y="148dip" 
+ 	android:textSize="18sp" 
+ 	android:gravity="center_horizontal"
+ 	 android:textColor="#FFFFFF"
+   /> 
+     
+	 <ImageView
+	    android:id="@+id/hud_destImage"
+	    android:rotationY="180" 
+	    android:layout_width="30dip"
+	    android:layout_height="30dip" 
+	    android:layout_x="453dip" 
+		android:layout_y="153dip"
+	/> 
+        
+    <TextView
+		android:id="@+id/hud_residualDistance"
+		android:layout_width="110dip"
+		android:layout_height="100dip"
+		android:rotationY="180"
+		android:layout_x="345dip" 
+		android:gravity="center_horizontal"
+		android:layout_y="148dip" 
+		android:textSize="18sp" 
+		 android:textColor="#FFFFFF"
+     /> 
+       
+    <TextView
+	    android:id="@+id/hud_time"
+	    android:rotationY="180"
+	    android:layout_width="120dip"
+	    android:layout_height="100dip"
+	    android:layout_x="337dip" 
+		android:layout_y="175dip" 
+		android:textSize="18sp" 
+		android:gravity="center_horizontal"
+	    android:textColor="#FFFFFF" 
+     /> 
+      
+   <ImageView
+	    android:id="@+id/hud_roadImage"
+	    android:rotationY="180"
+	    android:layout_width="155dip"
+	    android:layout_height="155dip"
+	    android:layout_x="170dip" 
+		android:layout_y="70dip"
+     />   
+     
+     <ImageView
+	    android:id="@+id/hud_cross"
+	    android:rotationY="180"
+	    android:layout_width="305dip"
+	    android:layout_height="150dip"
+	    android:layout_x="100dip" 
+		android:layout_y="35dip"
+		android:visibility="gone" 
+     /> 
+  
+   <ImageView
+	    android:id="@+id/hud_cameraImage" 
+	    android:layout_width="40dip"
+	    android:layout_height="40dip"
+	    android:layout_x="413dip" 
+		android:layout_y="70dip"
+		android:src="@drawable/camera"
+		android:visibility="gone" 
+     />   
+     
+    
+     
+    <TextView
+	android:id="@+id/hud_speed_txt"
+	android:rotationY="180"
+	android:layout_width="100dip"
+	android:layout_height="30dip"
+	android:gravity="center_horizontal"
+	android:layout_x="53dip" 
+	android:layout_y="55dip" 
+	android:textSize="23sp" 
+	 android:textColor="#FFFFFF" 
+	/>  
+    
+    
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    
+    
+	    
+	<TextView
+	android:id="@+id/hud_roadName_msg"
+	android:rotationY="180"
+	android:layout_width="200dip"
+	android:layout_height="100dip"
+	android:gravity="center_horizontal"
+	android:layout_x="100dip" 
+	android:layout_y="175dip"
+	android:textSize="18sp" 
+	 android:textColor="#FFFFFF"
+	 android:visibility="gone" 
+	/>  
+	<!--  
+	<com.amap.api.navi.view.DriveWayView
+		 android:id="@+id/hud_roadPane_msg"
+		 android:rotationY="180"
+		 android:layout_width="200dip"
+		 android:layout_height="40dip"
+		 android:layout_x="100dip" 
+		 android:layout_y="195dip"
+		 android:visibility="gone" 
+	 /> 
+
+   
+     <ImageView
+	    android:id="@+id/hud_cross_msg"
+	    android:rotationY="180"
+	    android:layout_width="280dip"
+	    android:layout_height="160dip"
+	    android:layout_x="70dip" 
+		android:layout_y="10dip"
+		android:visibility="gone" 
+     /> 
+  
+	
+   <ImageView
+	    android:id="@+id/hud_cameraImage_msg"
+	    android:rotationY="180"
+	    android:layout_width="60dip"
+	    android:layout_height="60dip"
+	    android:layout_x="50dip" 
+		android:layout_y="10dip"
+		android:src="@drawable/camera"
+		android:visibility="gone" 
+     />   
+     	-->	
+    <!-- .................................................................................................. -->	
+    
+    
+      <ImageView
+	    android:id="@+id/hud_msg_line"
+	    android:rotationY="180"
+	    android:layout_width="1dip"
+	    android:layout_height="170dip"
+	    android:layout_x="260dip" 
+		android:layout_y="35dip"
+		android:visibility="gone" 
+     />  
+     
+        <TextView
+	    android:id="@+id/hud_msg_id"
+	    android:rotationY="180"
+	    android:layout_width="140dip"
+	    android:layout_height="25dip"
+	     android:textSize="17sp" 
+	    android:layout_x="310dip" 
+		android:layout_y="90dip" 
+		android:visibility="gone"
+		android:textColor="#FFFFFF" 
+	    android:gravity="center_horizontal" 
+     /> 
+      
+     <ImageView
+	    android:id="@+id/hud_msg_logo"
+	    android:rotationY="180"
+	    android:layout_width="30dip"
+	    android:layout_height="30dip"
+	    android:layout_x="400dip" 
+		android:layout_y="55dip"
+		android:visibility="gone" 
+     />
+     
+       <TextView
+	    android:id="@+id/hud_msg_title"
+	    android:rotationY="180"
+	    android:layout_width="140dip"
+	    android:layout_height="25dip"
+	     android:textSize="17sp" 
+	    android:layout_x="340dip" 
+		android:layout_y="85dip" 
+		android:visibility="gone"
+		android:textColor="#FFFFFF" 
+	    android:gravity="center_horizontal" 
+     /> 
+     
+     <TextView
+	    android:id="@+id/hud_msg_context"
+	    android:rotationY="180"
+	    android:layout_width="200dip"
+	    android:layout_height="180dip"
+	    android:textSize="15sp" 
+	    android:layout_x="340dip" 
+		android:layout_y="110dip" 
+		android:visibility="gone" 
+	    android:textColor="#FFFFFF" 
+	    android:gravity="center_horizontal"
+     /> 
+     
+     
+      <ImageView
+	    android:id="@+id/hud_msg_right"
+	    android:rotationY="180"
+	    android:layout_width="40dip"
+	    android:layout_height="40dip"
+	    android:layout_x="300dip" 
+		android:layout_y="170dip"
+		android:visibility="gone" 
+     />
+      
+      <TextView
+	    android:id="@+id/hud_msg_left_txt"
+	    android:rotationY="180"
+	    android:layout_width="50dip"
+	    android:layout_height="25dip"
+	     android:textSize="13sp" 
+	    android:layout_x="310dip" 
+		android:layout_y="180dip" 
+		android:visibility="gone" 
+		android:textColor="#FFFFFF"  
+     /> 
+     
+       <TextView
+	    android:id="@+id/hud_msg_type" 
+	    android:layout_width="10dip"
+	    android:layout_height="10dip"
+	     android:textSize="13sp" 
+	    android:layout_x="40dip" 
+		android:layout_y="10dip" 
+		android:visibility="gone" 
+		android:textColor="#FFFFFF"  
+     /> 
+     
+        <TextView
+	    android:id="@+id/hud_msg_location" 
+	    android:layout_width="10dip"
+	    android:layout_height="10dip"
+	     android:textSize="13sp" 
+	    android:layout_x="40dip" 
+		android:layout_y="10dip" 
+		android:visibility="gone" 
+		android:textColor="#FFFFFF"  
+     /> 
+      
+      <ImageView
+	    android:id="@+id/hud_msg_left"
+	    android:rotationY="180"
+	    android:layout_width="50dip"
+	    android:layout_height="40dip"
+	    android:layout_x="460dip" 
+		android:layout_y="170dip"
+		android:visibility="gone" 
+     />
+      
+      <TextView
+	    android:id="@+id/hud_msg_right_txt"
+	    android:rotationY="180"
+	    android:layout_width="50dip"
+	    android:layout_height="25dip"
+	     android:textSize="13sp" 
+	    android:layout_x="420dip" 
+		android:layout_y="180dip" 
+		android:visibility="gone" 
+		android:textColor="#FFFFFF"   
+     /> 
+       
+</AbsoluteLayout>

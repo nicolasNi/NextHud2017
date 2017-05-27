@@ -1,9 +1,14 @@
 package com.lt.nexthud2017.base;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.databinding.BaseObservable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.iflytek.cloud.ErrorCode;
@@ -19,6 +24,7 @@ import com.iflytek.cloud.ui.RecognizerDialogListener;
 import com.iflytek.cloud.util.ContactManager;
 import com.iflytek.cloud.util.ContactManager.ContactListener;
 import com.lt.nexthud2017.MainActivity;
+import com.lt.nexthud2017.R;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -38,13 +44,20 @@ public abstract class BaseViewModel extends BaseObservable {
     // 用HashMap存储听写结果
     private HashMap<String, String> mIatResults = new LinkedHashMap<String, String>();
 
+    private Dialog dialog;
+
     public BaseViewModel(){
         // 初始化识别无UI识别对象
         // 使用SpeechRecognizer对象，可根据回调消息自定义界面；
         if(mIat==null) {
             mIat = SpeechRecognizer.createRecognizer(MainActivity.mainContext, mInitListener);
         }
-
+        dialog = new Dialog(MainActivity.mainContext);
+        LayoutInflater inflater = (LayoutInflater) MainActivity.mainContext
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View layout = inflater.inflate(R.layout.dialog_sound, null);
+        dialog.addContentView(layout, new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         setParam();
     }
 
@@ -52,7 +65,7 @@ public abstract class BaseViewModel extends BaseObservable {
         String s = "dff";
         Log.d("log===========",s);
 
-
+        dialog.show();
 
         mIat.startListening(mRecognizerListener);
     }
@@ -151,11 +164,12 @@ public abstract class BaseViewModel extends BaseObservable {
         @Override
         public void onError(SpeechError error) {
             Log.d("mRecognizerListener","onError");
-
+            dialog.dismiss();
         }
 
         @Override
         public void onEndOfSpeech() {
+            dialog.dismiss();
             Log.d("mRecognizerListener","onError");
         }
 

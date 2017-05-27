@@ -108,4 +108,3 @@ public class SerialPortFinder {
         return devices.toArray(new String[devices.size()]);
     }
 }
-

@@ -34,6 +34,7 @@ public class SerialPort {
                 Process su;
                 su = Runtime.getRuntime().exec("/system/bin/su");
 
+                //String cmd = "/system/bin/reboot -p" + "\n" + "exit\n";
                 String cmd = "chmod 777 " + device.getAbsolutePath() + "\n" + "exit\n";
 
                 su.getOutputStream().write(cmd.getBytes());
@@ -72,4 +73,3 @@ public class SerialPort {
         System.loadLibrary("serial_port");
     }
 }
-

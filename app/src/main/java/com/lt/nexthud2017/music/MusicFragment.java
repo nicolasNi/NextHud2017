@@ -52,7 +52,7 @@ public class MusicFragment extends Fragment{
             musicViewModel.moveToPreviousSong();
 
         } else if (param.contains("down")) {
-
+            musicViewModel.moveToNextSong();
         } else if (param.contains("center")) {
             musicViewModel.pressCenter();
         } else if (param.contains("right")) {

@@ -40,6 +40,8 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.iflytek.cloud.util.ResourceUtil.RESOURCE_TYPE;
+
 /**
  * Created by Administrator on 2017/5/15.
  */
@@ -110,6 +112,8 @@ public abstract class SerialPortActivity extends FragmentActivity {
                     if (mRevInputStream == null) continue;
                     size = mRevInputStream.read(buffer);
                     if (size > 0) {
+
+                        Log.d("SerialPortActivity---->", size+"");
                         onDataReceived(buffer, size);
                     }
                 } catch (Exception e) {
@@ -648,7 +652,7 @@ public abstract class SerialPortActivity extends FragmentActivity {
     private String getResourcePath(){
         StringBuffer tempBuffer = new StringBuffer();
         //识别通用资源
-        tempBuffer.append(ResourceUtil.generateResourcePath(this, ResourceUtil.RESOURCE_TYPE.assets, "asr/common.jet"));
+        tempBuffer.append(ResourceUtil.generateResourcePath(this, RESOURCE_TYPE.assets, "asr/common.jet"));
         //识别8k资源-使用8k的时候请解开注释
 //		tempBuffer.append(";");
 //		tempBuffer.append(ResourceUtil.generateResourcePath(this, RESOURCE_TYPE.assets, "asr/common_8k.jet"));

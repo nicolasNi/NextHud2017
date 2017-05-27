@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/bluetooth_nav"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_x="125dip"
+        android:layout_y="240dip"
+        android:rotationY="180"
+        android:src="@drawable/bluetooth_nav" />
+    <ImageView
+        android:id="@+id/music_nav"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_x="185dip"
+        android:layout_y="240dip"
+        android:rotationY="180"
+        android:src="@drawable/music_nav" />
+    <ImageView
+        android:id="@+id/wechat_nav"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_x="245dip"
+        android:layout_y="240dip"
+        android:rotationY="180"
+        android:src="@drawable/wechat_nav" />
+    <ImageView
+        android:id="@+id/location_nav"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_x="305dip"
+        android:layout_y="240dip"
+        android:rotationY="180"
+        android:src="@drawable/location_nav" />
+    <ImageView
+        android:id="@+id/dashboard_nav"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_x="365dip"
+        android:layout_y="240dip"
+        android:rotationY="180"
+        android:src="@drawable/dashboard_nav" />
+
+</AbsoluteLayout>

@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
     android:background="#000000" >
-    <FrameLayout
-        android:id="@+id/fl_content"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"  >
-        <fragment
-            android:id="@+id/musicFragment"
-            android:name="com.lt.nexthud2017.music.MusicFragment"
-            android:layout_height="fill_parent"
-            android:layout_width="fill_parent" />
-    </FrameLayout>
-</LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"></android.support.v4.view.ViewPager>
+    <com.lt.nexthud2017.base.FunctionNavigation
+        android:id="@+id/navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></com.lt.nexthud2017.base.FunctionNavigation>
+</AbsoluteLayout>

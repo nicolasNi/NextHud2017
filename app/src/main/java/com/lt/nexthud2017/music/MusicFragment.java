@@ -33,6 +33,9 @@ public class MusicFragment extends Fragment{
         edtKey = musicFragmentBinding.edtSearch;
         edtKey.setCursorVisible(false);
         musicListView = musicFragmentBinding.lvSearchList;
+        if(musicViewModel != null){
+            musicFragmentBinding.setViewModel(musicViewModel);
+        }
         return musicFragmentBinding.getRoot();
     }
 
@@ -44,7 +47,8 @@ public class MusicFragment extends Fragment{
 
     public void setMusicViewModel(MusicViewModel viewModel){
         musicViewModel = viewModel;
-        musicFragmentBinding.setViewModel(musicViewModel);
+        if(musicFragmentBinding != null){
+        musicFragmentBinding.setViewModel(musicViewModel);}
     }
 
     public void changeAction(String param) {

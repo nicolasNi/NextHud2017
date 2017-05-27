@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,22 +12,33 @@ import android.view.WindowManager;
 
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
+import com.lt.nexthud2017.base.FragmentsAdapter;
+import com.lt.nexthud2017.base.FunctionNavigation;
 import com.lt.nexthud2017.music.MusicFragment;
 import com.lt.nexthud2017.music.MusicViewModel;
 import com.lt.nexthud2017.music.util.MusicService;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.List;
 
 import android_serialport_api.SerialPortActivity;
 
 public class MainActivity extends SerialPortActivity {
     public static MainActivity mainContext;
     public static MusicFragment music;
+    public BlankFragment testFragment;
+    public BlankFragment2 testFragment2;
+    public BlankFragment3 testFragment3;
+    public BlankFragment4 testFragment4;
     private MusicViewModel musicViewModel;
 
     public static Boolean isMusicPlayedBoolean = false;
+    private ViewPager viewPager;
+    private List<Fragment> fragmentList = new ArrayList<>();
+    private FragmentsAdapter fragmentsAdapter;
 
+    private FunctionNavigation navigation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,15 +54,40 @@ public class MainActivity extends SerialPortActivity {
 
         mainContext = this;
         FragmentManager fm = getSupportFragmentManager();
-        music = (MusicFragment) fm.findFragmentById(R.id.musicFragment);
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.show(music);
-        ft.commit();
+//        music = (MusicFragment) fm.findFragmentById(R.id.musicFragment);
+//        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//        ft.show(music);
+//        ft.commit();
 
+        music = new MusicFragment();
+        testFragment = new BlankFragment();
+        testFragment2 = new BlankFragment2();
+        testFragment3 = new BlankFragment3();
+        testFragment4 = new BlankFragment4();
+        fragmentList.add(music);
+        fragmentList.add(testFragment);
+        fragmentList.add(testFragment2);
+        fragmentList.add(testFragment3);
+        fragmentList.add(testFragment4);
+        fragmentsAdapter =new  FragmentsAdapter(fm,fragmentList);
+        viewPager = (ViewPager)findViewById(R.id.viewPager);
+        viewPager.setAdapter(fragmentsAdapter);
+
+        navigation = (FunctionNavigation)findViewById(R.id.navigation);
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         musicViewModel = new MusicViewModel(this);
         musicViewModel.setMusicFragment(music);
-        music.setMusicViewModel(musicViewModel);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        music.setMusicViewModel(musicViewModel);
     }
 
     private void initialSpeech(){
@@ -98,11 +135,17 @@ public class MainActivity extends SerialPortActivity {
                     String bleMsgStr = new String(_msg, Charset.forName("UTF-8"));
                     if(bleMsgStr.contains("36-")){
                         clearMsg();
-                        music.changeAction(bleMsgStr);
+                        if (bleMsgStr.contains("right")) {
+                            navigation.pressNextButton();
+                        }else if (bleMsgStr.contains("center") && navigation.isDisplayed) {
+                            viewPager.setCurrentItem(navigation.currentIndex);
+                            navigation.pressCenterButton();
+                        }else {
+                        music.changeAction(bleMsgStr);}
                     }
                 }
                 catch (Exception ex){
-
+                    ex.printStackTrace();
                 }
             }
         });

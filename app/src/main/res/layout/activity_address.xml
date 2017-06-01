@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.lt.nexthud2017.address.AddressViewModel"/>
+    </data>
+<AbsoluteLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
@@ -38,6 +44,7 @@
             android:singleLine="true"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
+            android:text="@={viewModel.searchKey}"
             tools:ignore="RtlCompat,HardcodedText,RtlHardcoded" />
 
         <ImageView
@@ -59,6 +66,7 @@
 
     <ListView
         android:id="@+id/address_search_list"
+        app:adapter="@{ viewModel.addressAdapter }"
         android:layout_width="390dip"
         android:layout_height="100dp"
         android:layout_x="80dip"
@@ -75,3 +83,4 @@
 
 
 </AbsoluteLayout>
+</layout>

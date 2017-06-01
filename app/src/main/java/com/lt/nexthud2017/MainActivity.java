@@ -1,22 +1,21 @@
 package com.lt.nexthud2017;
 
-import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
+import com.lt.nexthud2017.address.AddressFragment;
+import com.lt.nexthud2017.address.AddressViewModel;
+import com.lt.nexthud2017.normal.NormalFragment;
 import com.lt.nexthud2017.base.FragmentsAdapter;
 import com.lt.nexthud2017.base.FunctionNavigation;
 import com.lt.nexthud2017.music.MusicFragment;
 import com.lt.nexthud2017.music.MusicViewModel;
-import com.lt.nexthud2017.music.util.MusicService;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -31,7 +30,11 @@ public class MainActivity extends SerialPortActivity {
     public BlankFragment2 testFragment2;
     public BlankFragment3 testFragment3;
     public BlankFragment4 testFragment4;
+    public NormalFragment normalFragment;
+    public AddressFragment addressFragment;
+
     private MusicViewModel musicViewModel;
+    private AddressViewModel addressViewModel;
 
     public static Boolean isMusicPlayedBoolean = false;
     private ViewPager viewPager;
@@ -64,10 +67,12 @@ public class MainActivity extends SerialPortActivity {
         testFragment2 = new BlankFragment2();
         testFragment3 = new BlankFragment3();
         testFragment4 = new BlankFragment4();
-        fragmentList.add(music);
-        fragmentList.add(testFragment);
+        normalFragment = new NormalFragment();
+        addressFragment = new AddressFragment();
+        fragmentList.add(normalFragment);
+        fragmentList.add(addressFragment);
         fragmentList.add(testFragment2);
-        fragmentList.add(testFragment3);
+        fragmentList.add(music);
         fragmentList.add(testFragment4);
         fragmentsAdapter =new  FragmentsAdapter(fm,fragmentList);
         viewPager = (ViewPager)findViewById(R.id.viewPager);
@@ -77,17 +82,25 @@ public class MainActivity extends SerialPortActivity {
 
     }
 
+    public static double Latitude = 0;
+    public static String Speed = "0";
+    public static double Longitude = 0;
+
     @Override
     protected void onStart() {
         super.onStart();
         musicViewModel = new MusicViewModel(this);
         musicViewModel.setMusicFragment(music);
+
+        addressViewModel = new AddressViewModel(this);
+        addressViewModel.setAddressFragment(addressFragment);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         music.setMusicViewModel(musicViewModel);
+        addressFragment.setAddressViewModel(addressViewModel);
     }
 
     private void initialSpeech(){
@@ -141,7 +154,8 @@ public class MainActivity extends SerialPortActivity {
                             viewPager.setCurrentItem(navigation.currentIndex);
                             navigation.pressCenterButton();
                         }else {
-                        music.changeAction(bleMsgStr);}
+                            handleChangingActionForEachFragmentPage(navigation.currentIndex,bleMsgStr);
+                        }
                     }
                 }
                 catch (Exception ex){
@@ -149,6 +163,27 @@ public class MainActivity extends SerialPortActivity {
                 }
             }
         });
+    }
+
+    private void handleChangingActionForEachFragmentPage(int index, String bleMsgStr){
+        switch (index){
+            case 0:
+//                music.changeAction(bleMsgStr);
+                break;
+            case 1:
+                addressFragment.changeAction(bleMsgStr);
+                break;
+            case 2:
+//                music.changeAction(bleMsgStr);
+                break;
+            case 3:
+                music.changeAction(bleMsgStr);
+                break;
+            case 4:
+//                music.changeAction(bleMsgStr);
+                break;
+
+        }
     }
 
     @Override

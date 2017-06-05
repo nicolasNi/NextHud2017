@@ -13,7 +13,7 @@
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="b1c472cb976a2fd95f19cf16f8acd1fa"  />
-
+        <service android:name="com.amap.api.location.APSService"></service>
         <activity
             android:name=".MainActivity"
             android:screenOrientation="landscape">

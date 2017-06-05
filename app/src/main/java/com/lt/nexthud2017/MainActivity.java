@@ -11,6 +11,7 @@ import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
 import com.lt.nexthud2017.address.AddressFragment;
 import com.lt.nexthud2017.address.AddressViewModel;
+import com.lt.nexthud2017.hud.HudFragment;
 import com.lt.nexthud2017.normal.NormalFragment;
 import com.lt.nexthud2017.base.FragmentsAdapter;
 import com.lt.nexthud2017.base.FunctionNavigation;
@@ -32,16 +33,18 @@ public class MainActivity extends SerialPortActivity {
     public BlankFragment4 testFragment4;
     public NormalFragment normalFragment;
     public AddressFragment addressFragment;
+    public static HudFragment hudFragment;
 
     private MusicViewModel musicViewModel;
     private AddressViewModel addressViewModel;
 
     public static Boolean isMusicPlayedBoolean = false;
-    private ViewPager viewPager;
-    private List<Fragment> fragmentList = new ArrayList<>();
-    private FragmentsAdapter fragmentsAdapter;
+    private static ViewPager viewPager;
+    private static List<Fragment> fragmentList = new ArrayList<>();
+    private static FragmentsAdapter fragmentsAdapter;
 
     private FunctionNavigation navigation;
+    private static FragmentManager fm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +59,7 @@ public class MainActivity extends SerialPortActivity {
         initialSpeech();
 
         mainContext = this;
-        FragmentManager fm = getSupportFragmentManager();
+        fm = getSupportFragmentManager();
 //        music = (MusicFragment) fm.findFragmentById(R.id.musicFragment);
 //        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 //        ft.show(music);
@@ -69,19 +72,23 @@ public class MainActivity extends SerialPortActivity {
         testFragment4 = new BlankFragment4();
         normalFragment = new NormalFragment();
         addressFragment = new AddressFragment();
+        hudFragment = new HudFragment();
         fragmentList.add(normalFragment);
         fragmentList.add(addressFragment);
         fragmentList.add(testFragment2);
         fragmentList.add(music);
         fragmentList.add(testFragment4);
-        fragmentsAdapter =new  FragmentsAdapter(fm,fragmentList);
-        viewPager = (ViewPager)findViewById(R.id.viewPager);
-        viewPager.setAdapter(fragmentsAdapter);
 
+        viewPager = (ViewPager)findViewById(R.id.viewPager);
+        rebuildFragmentsAdapterAndSetAdapter();
         navigation = (FunctionNavigation)findViewById(R.id.navigation);
 
     }
 
+    private static void rebuildFragmentsAdapterAndSetAdapter(){
+        fragmentsAdapter =new  FragmentsAdapter(fm,fragmentList);
+        viewPager.setAdapter(fragmentsAdapter);
+    }
     public static double Latitude = 0;
     public static String Speed = "0";
     public static double Longitude = 0;
@@ -151,8 +158,13 @@ public class MainActivity extends SerialPortActivity {
                         if (bleMsgStr.contains("right")) {
                             navigation.pressNextButton();
                         }else if (bleMsgStr.contains("center") && navigation.isDisplayed) {
-                            viewPager.setCurrentItem(navigation.currentIndex);
-                            navigation.pressCenterButton();
+                            if(fragmentList.size()>5){
+                                viewPager.setCurrentItem(5);
+
+                            }else {
+                                viewPager.setCurrentItem(navigation.currentIndex);
+                                navigation.pressCenterButton();
+                            }
                         }else {
                             handleChangingActionForEachFragmentPage(navigation.currentIndex,bleMsgStr);
                         }
@@ -163,6 +175,11 @@ public class MainActivity extends SerialPortActivity {
                 }
             }
         });
+    }
+
+    public static void addHudFragment(){
+        fragmentList.add(hudFragment);
+        rebuildFragmentsAdapterAndSetAdapter();
     }
 
     private void handleChangingActionForEachFragmentPage(int index, String bleMsgStr){

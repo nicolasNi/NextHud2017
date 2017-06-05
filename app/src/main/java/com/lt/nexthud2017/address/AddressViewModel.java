@@ -19,7 +19,6 @@ import com.amap.api.services.poisearch.PoiResult;
 import com.amap.api.services.poisearch.PoiSearch;
 import com.lt.nexthud2017.MainActivity;
 import com.lt.nexthud2017.address.util.AddressAdapter;
-import com.lt.nexthud2017.address.util.LatLonPointUtil;
 import com.lt.nexthud2017.base.BaseViewModel;
 import com.lt.nexthud2017.music.Music;
 import com.lt.nexthud2017.music.MusicFragment;
@@ -64,7 +63,15 @@ public class AddressViewModel extends BaseViewModel {
             geocoderSearch = new GeocodeSearch(MainActivity.mainContext);
             geocoderSearch.setOnGeocodeSearchListener(geocodeSearchListener);
         }
-        LatLonPoint llp = LatLonPointUtil.getLatLonPoint();
+        LatLonPoint llp = new LatLonPoint(MainActivity.Latitude,
+                MainActivity.Longitude);
+        if(MainActivity.Latitude<1){
+            llp = new LatLonPoint((double)31.2776,
+                    (double)121.189262);
+            MainActivity.Latitude=(double)31.2776;
+            MainActivity.Longitude=(double)121.189262;
+        }
+
         RegeocodeQuery query = new RegeocodeQuery(llp, (float) 100, "1");
         geocoderSearch.getFromLocationAsyn(query);
     }
@@ -90,8 +97,28 @@ public class AddressViewModel extends BaseViewModel {
             searchKey.set("");
             startIat();
         }else {
-//            playMusic();
+            nav();
         }
+    }
+
+    public void nav() {
+        MainActivity.addHudFragment();
+//        if (listSearchResult == null || listSearchResult.size() < 1) {
+//            return;
+//        }
+//        Address address = listSearchResult.get(rowIndex);
+//        // add address history
+//        if (!isExist(address)) {
+//            getANewAddress(address);
+//            // download(musicPlayed);
+//        }
+//
+//        PageSwitcher.showPage(PAGETYPE.hudPage);
+//
+//
+//        MainActivity.hud.caclRoute("",MainActivity.Latitude,MainActivity.Longitude,
+//                address.latitude, address.longitude,2);
+
     }
 
 

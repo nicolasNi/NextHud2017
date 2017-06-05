@@ -1,5 +1,6 @@
 package com.lt.nexthud2017.normal;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -68,6 +69,7 @@ public class NormalFragment extends Fragment implements AMapLocationListener {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         normalView = inflater.inflate(R.layout.activity_normal, container, false);
         initView();
+        initAMapLocation();
         return normalView;
     }
 
@@ -126,6 +128,18 @@ public class NormalFragment extends Fragment implements AMapLocationListener {
 
     }
 
+    void initAMapLocation() {
+        locationClient = new AMapLocationClient((Context) this.getActivity().getApplicationContext());
+        locationOption = new AMapLocationClientOption();
+        // 设置定位模式为高精度模式
+        locationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
+        // 设置定位监听
+        locationClient.setLocationListener(this);
+        locationOption.setInterval(1000);
+        // 设置定位参数
+        locationClient.setLocationOption(locationOption);
+        locationClient.startLocation();
+    }
 
     boolean isGpsSuccess = false;
     static boolean isSetBri=false;

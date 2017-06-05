@@ -84,7 +84,7 @@ public class AddressFragment extends Fragment {
     private AddressViewModel addressViewModel;
     private ActivityAddressBinding addressFragmentBinding;
     private EditText edtKey;
-    private ListView addressListView;
+
 
     @Nullable
     @Override

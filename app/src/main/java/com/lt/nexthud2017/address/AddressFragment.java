@@ -73,6 +73,8 @@ public class AddressFragment extends Fragment {
     boolean isShowing = false;
     GeocodeSearch geocoderSearch;
     String cityAddress;
+    private ListView addressListView;
+
 
     // add address history
     private boolean displayAddressHistory = true;
@@ -95,37 +97,6 @@ public class AddressFragment extends Fragment {
             addressFragmentBinding.setViewModel(addressViewModel);
         }
         return addressFragmentBinding.getRoot();
-
-//        PoiSearch search;
-//        PoiSearch.Query query;
-//        query = new PoiSearch.Query("东方明珠", null, "上海");
-//        query.setPageSize(10);
-//        query.setPageNum(1);
-//
-//        // 查询兴趣点
-//        search = new PoiSearch(MainActivity.mainContext, query);
-//        // 异步搜索
-//        search.searchPOIAsyn();
-//        search.setOnPoiSearchListener(new PoiSearch.OnPoiSearchListener() {
-//            @Override
-//            public void onPoiSearched(PoiResult poiResult, int j) {
-//                List<String> strs = new ArrayList<String>();
-//                List<PoiItem> items = poiResult.getPois();
-//                if (items != null && items.size() > 0) {
-//                    PoiItem item = null;
-//                    for (int i = 0, count = items.size(); i < count; i++) {
-//                        item = items.get(i);
-//                        strs.add(item.getTitle());
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onPoiItemSearched(PoiItem poiItem, int i) {
-//
-//            }
-//        });
-
     }
 
     private void createBinding(LayoutInflater inflater, ViewGroup container){
@@ -141,13 +112,34 @@ public class AddressFragment extends Fragment {
 
     public void changeAction(String param) {
         if (param.contains("up")) {
-//            addressViewModel.moveToPreviousSong();
+            addressViewModel.moveToPreviousAddress();
 
         } else if (param.contains("down")) {
-//            addressViewModel.moveToNextSong();
+            addressViewModel.moveToNextAddress();
         } else if (param.contains("center")) {
             addressViewModel.pressCenter();
         } else if (param.contains("right")) {
         }
+    }
+
+    public void undisplayCursor() {
+        if (edtKey != null) {
+            edtKey.setFocusable(false);
+            edtKey.setCursorVisible(false);
+            edtKey.setHintTextColor(Color.WHITE);
+            edtKey.setTextColor(Color.WHITE);
+        }
+    }
+
+    public void displayCursor() {
+        if (edtKey != null) {
+            edtKey.setFocusable(true);
+            edtKey.setHintTextColor(Color.rgb(23, 169, 200));
+            edtKey.setTextColor(Color.rgb(23, 169, 200));
+        }
+    }
+
+    public void scrollListView(int position){
+        addressListView.smoothScrollToPosition(position);
     }
 }

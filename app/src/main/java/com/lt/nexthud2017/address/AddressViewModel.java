@@ -102,7 +102,16 @@ public class AddressViewModel extends BaseViewModel {
     }
 
     public void nav() {
-        MainActivity.addHudFragment();
+
+        AddressAdapter adapter = addressAdapter.get();
+        if(adapter != null){
+            Address address = (Address)adapter.getItem(adapter.selectItem);
+            MainActivity.addHudFragment();
+
+            MainActivity.hudFragment.caclRoute("",MainActivity.Latitude,MainActivity.Longitude,
+                    address.latitude, address.longitude,2);
+        }
+
 //        if (listSearchResult == null || listSearchResult.size() < 1) {
 //            return;
 //        }

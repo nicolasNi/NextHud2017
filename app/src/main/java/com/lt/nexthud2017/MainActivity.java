@@ -17,6 +17,7 @@ import com.lt.nexthud2017.base.FragmentsAdapter;
 import com.lt.nexthud2017.base.FunctionNavigation;
 import com.lt.nexthud2017.music.MusicFragment;
 import com.lt.nexthud2017.music.MusicViewModel;
+import com.lt.nexthud2017.weixin.WeiXinFragment;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -34,17 +35,19 @@ public class MainActivity extends SerialPortActivity {
     public NormalFragment normalFragment;
     public AddressFragment addressFragment;
     public static HudFragment hudFragment;
+    public WeiXinFragment weiXinFragment;
 
     private MusicViewModel musicViewModel;
     private AddressViewModel addressViewModel;
 
     public static Boolean isMusicPlayedBoolean = false;
-    private static ViewPager viewPager;
+    private static ViewPager  viewPager;
     private static List<Fragment> fragmentList = new ArrayList<>();
     private static FragmentsAdapter fragmentsAdapter;
 
     private FunctionNavigation navigation;
     private static FragmentManager fm;
+    public static String DeviceId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,9 +76,10 @@ public class MainActivity extends SerialPortActivity {
         normalFragment = new NormalFragment();
         addressFragment = new AddressFragment();
         hudFragment = new HudFragment();
+        weiXinFragment = new WeiXinFragment();
         fragmentList.add(normalFragment);
         fragmentList.add(addressFragment);
-        fragmentList.add(testFragment2);
+        fragmentList.add(weiXinFragment);
         fragmentList.add(music);
         fragmentList.add(testFragment4);
 
@@ -180,6 +184,14 @@ public class MainActivity extends SerialPortActivity {
     public static void addHudFragment(){
         fragmentList.add(hudFragment);
         rebuildFragmentsAdapterAndSetAdapter();
+        if(getHudFragmentIndex()>=0){
+            viewPager.setCurrentItem(getHudFragmentIndex());
+        }
+    }
+
+    private static int getHudFragmentIndex(){
+        int index = fragmentList.indexOf(hudFragment);
+        return index;
     }
 
     private void handleChangingActionForEachFragmentPage(int index, String bleMsgStr){

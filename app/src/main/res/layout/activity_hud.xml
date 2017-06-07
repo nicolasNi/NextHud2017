@@ -162,41 +162,7 @@
 	android:textSize="18sp" 
 	 android:textColor="#FFFFFF"
 	 android:visibility="gone" 
-	/>  
-	<!--  
-	<com.amap.api.navi.view.DriveWayView
-		 android:id="@+id/hud_roadPane_msg"
-		 android:rotationY="180"
-		 android:layout_width="200dip"
-		 android:layout_height="40dip"
-		 android:layout_x="100dip" 
-		 android:layout_y="195dip"
-		 android:visibility="gone" 
-	 /> 
-
-   
-     <ImageView
-	    android:id="@+id/hud_cross_msg"
-	    android:rotationY="180"
-	    android:layout_width="280dip"
-	    android:layout_height="160dip"
-	    android:layout_x="70dip" 
-		android:layout_y="10dip"
-		android:visibility="gone" 
-     /> 
-  
-	
-   <ImageView
-	    android:id="@+id/hud_cameraImage_msg"
-	    android:rotationY="180"
-	    android:layout_width="60dip"
-	    android:layout_height="60dip"
-	    android:layout_x="50dip" 
-		android:layout_y="10dip"
-		android:src="@drawable/camera"
-		android:visibility="gone" 
-     />   
-     	-->	
+	/>
     <!-- .................................................................................................. -->	
     
     

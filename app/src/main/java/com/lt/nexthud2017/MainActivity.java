@@ -167,6 +167,7 @@ public class MainActivity extends SerialPortActivity {
 
                             }else {
                                 viewPager.setCurrentItem(navigation.currentIndex);
+                                startToDisplayWeiXinFragment();
                                 navigation.pressCenterButton();
                             }
                         }else {
@@ -179,6 +180,12 @@ public class MainActivity extends SerialPortActivity {
                 }
             }
         });
+    }
+
+    private void startToDisplayWeiXinFragment(){
+        if(navigation.currentIndex == 2){
+            weiXinFragment.shoWeiXinFragment();
+        }
     }
 
     public static void addHudFragment(){

@@ -32,6 +32,12 @@ import java.util.List;
 import java.util.Stack;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
+
+import rx.Subscription;
+import rx.Observer;
+import rx.Observable;
+import rx.functions.Action1;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,6 +59,7 @@ public class WeiXinFragment extends Fragment {
     boolean isLogin = false;
     WeiXinAdapter adapter;
     static int rowIndex = 0;
+    private Subscription subscription;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -77,10 +84,11 @@ public class WeiXinFragment extends Fragment {
             Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.weixin);
             qrcode.setImageBitmap(bmp);
 
-            if (baseTimer == null) {
-                baseTimer = new Timer(true);
-                baseTimer.schedule(baseTask, 100, 25000);
-            }
+//            if (baseTimer == null) {
+//                baseTimer = new Timer(true);
+//                baseTimer.schedule(baseTask, 100, 25000);
+//            }
+            startToKeepRunningGogogoMethod();
         } else if (adapter != null) {
             lv.setAdapter(adapter);
             if (adapter.getCount() > 0) {
@@ -90,23 +98,28 @@ public class WeiXinFragment extends Fragment {
         }
     }
 
-    TimerTask baseTask = new TimerTask() {
-        public void run() {
-            try {
-                if (!isLogin) {
-                    try {
-                        weChat.gogogo();
-                        Log.e("weixin", "reflash");
-                    } catch (Exception ex2) {
-                        Log.e("weixin2", ex2.toString());
+    private void startToKeepRunningGogogoMethod(){
+        subscription = Observable.interval(0, 25, TimeUnit.SECONDS).subscribe(
+                new Action1<Long>() {
+                    @Override
+                    public void call(Long aLong) {
+                        try {
+                            if (!isLogin) {
+                                try {
+                                    weChat.gogogo();
+                                    Log.e("weixin", "reflash");
+                                } catch (Exception ex2) {
+                                    Log.e("weixin2", ex2.toString());
+                                }
+                            }
+                        } catch (Exception ex) {
+                            isLoad = false;
+                            Log.e("weixin", ex.toString());
+                        }
                     }
                 }
-            } catch (Exception ex) {
-                isLoad = false;
-                Log.e("weixin", ex.toString());
-            }
-        }
-    };
+        );
+    }
 
 
     /**
@@ -443,4 +456,12 @@ public class WeiXinFragment extends Fragment {
         }
     }
 
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        String s = "fa";
+        Log.d("wechat Destory",s);
+    }
 }

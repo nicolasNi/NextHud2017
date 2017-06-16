@@ -3,6 +3,7 @@ package com.lt.nexthud2017.weixin;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.google.gson.internal.Excluder;
 import com.lt.nexthud2017.MainActivity;
 import com.lt.nexthud2017.weixin.util.BaseResponeBean;
 import com.lt.nexthud2017.weixin.util.DownLoadQrCodeThread;
@@ -10,13 +11,17 @@ import com.lt.nexthud2017.weixin.util.HeartBeatThread;
 import com.lt.nexthud2017.weixin.util.StringSubClass;
 import com.lt.nexthud2017.weixin.util.WaitScanAndLoginThread;
 import com.lt.nexthud2017.weixin.util.HttpClient;
+import com.lt.nexthud2017.weixin.util.WeChatHttpMethod;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import rx.functions.Action1;
 
 /**
  * Created by Administrator on 2017/6/7.
@@ -41,6 +46,7 @@ public class WeChatClass {
     private WaitScanAndLoginThread.OnScanListener mScanListener;
     private HeartBeatThread.OnNewMsgListener mNewMsgListener;
     private OnLoadQrCodeListener mQrCodeListener;
+    private OnLoadQrCodeListenerByStream mQrCodeListenerByStream;
     public static WaitScanAndLoginThread loginThread = null;
 
     //bitmap
@@ -48,18 +54,24 @@ public class WeChatClass {
         void onLoadSuccess(byte[] imageBytes);
     }
 
+    public interface OnLoadQrCodeListenerByStream {
+        void onLoadSuccess(InputStream inputStream);
+    }
 
     public void gogogo() {
         System.setProperty("jsse.enableSNIExtension", "false");
-        String result = hc.post("https://login.weixin.qq.com/jslogin?appid=wx782c26e4c19acffb&redirect_uri=https%3A%2F%2Fwx.qq.com%2Fcgi-bin%2Fmmwebwx-bin%2Fwebwxnewloginpage&fun=new&lang=zh_CN&_=" + System.currentTimeMillis(), "");
-        uuid = ss.subStringOne(result, ".uuid = \"", "\";");
-        DownLoadQrCodeThread qrCodeThread = new DownLoadQrCodeThread("https://login.weixin.qq.com/qrcode/" + uuid, true);
-        qrCodeThread.setListener(new DownLoadQrCodeThread.OnloadQrCodeFinnishListener() {
-
+        WeChatHttpMethod.getInstance().getUUID(new Action1<String>() {
             @Override
-            public void onLoadSuccess(byte[] imageBytes) {
-                if (mQrCodeListener != null) {
-                    mQrCodeListener.onLoadSuccess(imageBytes);
+            public void call(final String uuid) {
+                String imageUrl = "https://login.weixin.qq.com/qrcode/" + uuid;
+                InputStream is=null;
+                try {
+                     is = new java.net.URL(imageUrl).openStream();
+                }catch (Exception ex){
+                    ex.printStackTrace();
+                }
+                if (mQrCodeListenerByStream != null) {
+                    mQrCodeListenerByStream.onLoadSuccess(is);
                 }
                 if (loginThread != null) {
                     try {
@@ -73,10 +85,8 @@ public class WeChatClass {
                 loginThread = new WaitScanAndLoginThread(uuid, WeChatClass.this);
                 loginThread.setmScanListener(mScanListener);
                 loginThread.start();
-
             }
         });
-        qrCodeThread.start();
     }
 
     String sendUrl = "/webwxsendmsg?lang=zh_CN&pass_ticket=%s";
@@ -129,6 +139,10 @@ public class WeChatClass {
 
     public void setmQrCodeListener(OnLoadQrCodeListener mQrCodeListener) {
         this.mQrCodeListener = mQrCodeListener;
+    }
+
+    public void setmQrCodeListenerByStream(OnLoadQrCodeListenerByStream mQrCodeListenerByStream) {
+        this.mQrCodeListenerByStream = mQrCodeListenerByStream;
     }
 
     public void init() {

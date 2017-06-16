@@ -24,6 +24,7 @@ import com.lt.nexthud2017.weixin.util.HttpClient;
 import com.lt.nexthud2017.weixin.util.WaitScanAndLoginThread;
 import com.lt.nexthud2017.weixin.util.WeiXinAdapter;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -84,10 +85,6 @@ public class WeiXinFragment extends Fragment {
             Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.weixin);
             qrcode.setImageBitmap(bmp);
 
-//            if (baseTimer == null) {
-//                baseTimer = new Timer(true);
-//                baseTimer.schedule(baseTask, 100, 25000);
-//            }
             startToKeepRunningGogogoMethod();
         } else if (adapter != null) {
             lv.setAdapter(adapter);
@@ -99,13 +96,16 @@ public class WeiXinFragment extends Fragment {
     }
 
     private void startToKeepRunningGogogoMethod(){
-        subscription = Observable.interval(0, 25, TimeUnit.SECONDS).subscribe(
+        subscription = Observable
+                .interval(0, 25, TimeUnit.SECONDS)
+                .subscribe(
                 new Action1<Long>() {
                     @Override
                     public void call(Long aLong) {
                         try {
                             if (!isLogin) {
                                 try {
+                                    Log.d("GOOOOOOOOOOOO---",Thread.currentThread().getName());
                                     weChat.gogogo();
                                     Log.e("weixin", "reflash");
                                 } catch (Exception ex2) {
@@ -265,12 +265,10 @@ public class WeiXinFragment extends Fragment {
             }
         });
 
-        weChat.setmQrCodeListener(new WeChatClass.OnLoadQrCodeListener() {
-
+        weChat.setmQrCodeListenerByStream(new WeChatClass.OnLoadQrCodeListenerByStream(){
             @Override
-            public void onLoadSuccess(final byte[] imageBytes) {
-
-                Bitmap bm = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+            public void onLoadSuccess(InputStream inputStream) {
+                Bitmap bm = BitmapFactory.decodeStream(inputStream);
                 final Bitmap newBm = toHeibai(bm);
 
                 MainActivity.mainContext.runOnUiThread(new Runnable() {
@@ -285,9 +283,7 @@ public class WeiXinFragment extends Fragment {
                         }
                     }
                 });
-
             }
-
         });
 
     }

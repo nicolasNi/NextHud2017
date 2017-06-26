@@ -43,10 +43,16 @@ public class WaitScanAndLoginThread extends Thread{
     @Override
     public void run() {
         while(running){
-            String result = hc.get(
-                    "https://login.weixin.qq.com/cgi-bin/mmwebwx-bin/login?tip="
-                            + tip + "&uuid=" + uuid + "&_="
-                            + System.currentTimeMillis(), "utf-8", null, false);
+//            String result = hc.get(
+//                    "https://login.weixin.qq.com/cgi-bin/mmwebwx-bin/login?tip="
+//                            + tip + "&uuid=" + uuid + "&_="
+//                            + System.currentTimeMillis(), "utf-8", null, false);
+
+//            String result = hc.getLoginResultFromOKHttp(
+//                    "https://login.weixin.qq.com/cgi-bin/mmwebwx-bin/login?tip="
+//                            + tip + "&uuid=" + uuid );
+
+            String result = hc.getLoginResultFromRetrofit( tip + "" ,uuid );
 
             String code="";
             try

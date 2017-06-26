@@ -23,6 +23,13 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
+import retrofit2.Retrofit;
+
 /**
  * Created by Administrator on 2017/6/7.
  */
@@ -49,6 +56,66 @@ public class HttpClient {
         }
     }
 
+
+    public String getLoginResult(String url){
+        StringBuilder sb=new StringBuilder();
+        try{
+            URL url1 = new URL(url);
+            HttpURLConnection httpURLConnection =(HttpURLConnection)url1.openConnection();
+            httpURLConnection.setRequestMethod("GET");
+            InputStream is = httpURLConnection.getInputStream();
+            InputStreamReader inputStreamReader = new InputStreamReader(is);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+            String line="";
+            while ((line=bufferedReader.readLine()) != null){
+                sb.append(line);
+            }
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return sb.toString();
+    }
+
+    public String getLoginResultFromOKHttp(String url){
+        String result="";
+        try{
+            OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                    .build();
+            Request request = new Request.Builder()
+                    .url(url)
+                    .build();
+
+            Call call = okHttpClient.newCall(request);
+            Response response = call.execute();
+            result = response.body().string();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public String getLoginResultFromRetrofit(String tip, String uuid){
+        String result="";
+        try{
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("https://login.weixin.qq.com/")
+                    .build();
+
+            WeChatService service = retrofit.create(WeChatService.class);
+
+            retrofit2.Call<ResponseBody> call = service.getResult(tip,uuid);
+            retrofit2.Response<ResponseBody> response = call.execute();
+            result = response.body().string();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
 
     public String get(String url, String charset,String referer,boolean isRedirects) {
         try {

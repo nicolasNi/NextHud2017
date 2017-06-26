@@ -184,7 +184,7 @@ public class MainActivity extends SerialPortActivity {
 
     private void startToDisplayWeiXinFragment(){
         if(navigation.currentIndex == 2){
-            weiXinFragment.shoWeiXinFragment();
+            weiXinFragment.showWeiXinFragment();
         }
     }
 

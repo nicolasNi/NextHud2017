@@ -19,4 +19,8 @@ public interface WeChatService {
 
     @GET("")
     retrofit2.Call<ResponseBody> get();
+
+
+    @GET("cgi-bin/mmwebwx-bin/login")
+    retrofit2.Call<ResponseBody> getResult(@Query("tip")String tip, @Query("uuid")String uuid);
 }

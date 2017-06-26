@@ -79,7 +79,7 @@ public class WeiXinFragment extends Fragment {
         return friendCache;
     }
 
-    public void shoWeiXinFragment() {
+    public void showWeiXinFragment() {
         if (!isLogin) {
             isLoad = false;
             Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.weixin);

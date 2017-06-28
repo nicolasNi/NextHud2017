@@ -37,10 +37,5 @@ public class WeChatHttpMethodT {
         return SingletonHolder.INSTANCE;
     }
 
-    public void getLoginCode(int tip, String uuid, Subscriber<ResponseBody> subscriber){
-        weChatService.getLoginCode(tip, uuid+ "&_=")
-                .subscribeOn(Schedulers.io())
-                .unsubscribeOn(Schedulers.io())
-                .subscribe(subscriber);
-    }
+
 }

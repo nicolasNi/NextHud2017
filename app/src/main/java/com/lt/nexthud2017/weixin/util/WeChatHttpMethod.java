@@ -57,11 +57,8 @@ public class WeChatHttpMethod {
                 .subscribe(action1);
     }
 
-    public void getLoginCode(int tip, String uuid, Action1<String> action1){
-        weChatService.getLoginCode(tip, uuid+ "&_=")
-                .subscribeOn(Schedulers.io())
-                .unsubscribeOn(Schedulers.io())
-                .observeOn(Schedulers.computation())
+    public void getLoginResult(int tip, String uuid, Action1<String> action1){
+        weChatService.getLoginResult(tip, uuid)
                 .map(new Func1<ResponseBody, String>() {
                     @Override
                     public String call(ResponseBody responseBody) {
@@ -75,7 +72,6 @@ public class WeChatHttpMethod {
                         return code;
                     }
                 })
-                .observeOn(Schedulers.io())
                 .subscribe(action1);
     }
 }

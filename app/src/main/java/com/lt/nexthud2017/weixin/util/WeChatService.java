@@ -2,7 +2,11 @@ package com.lt.nexthud2017.weixin.util;
 
 import okhttp3.Call;
 import okhttp3.ResponseBody;
+import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -15,7 +19,7 @@ public interface WeChatService {
     Observable<ResponseBody> getUUID();
 
     @GET("cgi-bin/mmwebwx-bin/login")
-    Observable<ResponseBody> getLoginCode(@Query("tip")int tip, @Query("uuid")String uuid);
+    Observable<ResponseBody> getLoginResult(@Query("tip")int tip, @Query("uuid")String uuid);
 
     @GET("")
     retrofit2.Call<ResponseBody> get();
@@ -23,4 +27,8 @@ public interface WeChatService {
 
     @GET("cgi-bin/mmwebwx-bin/login")
     retrofit2.Call<ResponseBody> getResult(@Query("tip")String tip, @Query("uuid")String uuid);
+
+    @FormUrlEncoded
+    @POST
+    retrofit2.Call<ResponseBody> getInitialResult(@Body ResponseBody body);
 }

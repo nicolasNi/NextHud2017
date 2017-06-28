@@ -7,6 +7,8 @@ import com.lt.nexthud2017.weixin.WeiXinFriend;
 
 import java.util.List;
 
+import rx.functions.Action1;
+
 /**
  * Created by Administrator on 2017/6/7.
  */
@@ -43,16 +45,15 @@ public class WaitScanAndLoginThread extends Thread{
     @Override
     public void run() {
         while(running){
-//            String result = hc.get(
-//                    "https://login.weixin.qq.com/cgi-bin/mmwebwx-bin/login?tip="
-//                            + tip + "&uuid=" + uuid + "&_="
-//                            + System.currentTimeMillis(), "utf-8", null, false);
-
-//            String result = hc.getLoginResultFromOKHttp(
-//                    "https://login.weixin.qq.com/cgi-bin/mmwebwx-bin/login?tip="
-//                            + tip + "&uuid=" + uuid );
 
             String result = hc.getLoginResultFromRetrofit( tip + "" ,uuid );
+            Log.e("weixin result", result);
+
+//            WeChatHttpMethod.getInstance().getLoginResult(tip, uuid, new Action1<String>() {
+//                @Override
+//                public void call(String result) {
+//                }
+//            });
 
             String code="";
             try
@@ -87,8 +88,6 @@ public class WaitScanAndLoginThread extends Thread{
 
                     WeChatClass.wxuin=ss.subStringOne(loginResult, "<wxuin>", "</wxuin>");
                     WeChatClass.baseUrl=redirect_uri.substring(0, redirect_uri.lastIndexOf("/"));
-
-
 
                     mScanListener.onSure();
                     wechat.init();

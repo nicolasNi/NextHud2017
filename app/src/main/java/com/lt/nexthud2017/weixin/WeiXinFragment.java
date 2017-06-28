@@ -61,6 +61,7 @@ public class WeiXinFragment extends Fragment {
     WeiXinAdapter adapter;
     static int rowIndex = 0;
     private Subscription subscription;
+    private WeiXinViewModel weiXinViewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

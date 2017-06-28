@@ -21,6 +21,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Retrofit;
 import rx.functions.Action1;
 
 /**
@@ -157,7 +158,7 @@ public class WeChatClass {
             hc.contentType = "application/json;charset=UTF-8";
             String initResult = hc.post(baseUrl + "/webwxinit?r=" + System.currentTimeMillis(),
                     data);
-            Log.e("wx", "initResult:" + initResult);
+            Log.e("weixin", "initResult:" + initResult);
 
             try {
                 JSONObject obj = new JSONObject(initResult);
@@ -165,8 +166,7 @@ public class WeChatClass {
                 if (array != null) {
                     List<WeiXinFriend> friends = new ArrayList<WeiXinFriend>();
                     for (int i = 0; i < array.length(); i++) {
-                        Object obj1 = array.get(i);
-                        JSONObject obj2 = new JSONObject(obj1.toString());
+                        JSONObject obj2 = (JSONObject) array.getJSONObject(i);
                         WeiXinFriend friend = new WeiXinFriend();
                         friend.nameId = obj2.getString("UserName");
                         friend.nickName = obj2.getString("NickName");
@@ -197,8 +197,7 @@ public class WeChatClass {
                 if (array != null) {
                     List<WeiXinFriend> friends = new ArrayList<WeiXinFriend>();
                     for (int i = 0; i < array.length(); i++) {
-                        Object obj1 = array.get(i);
-                        JSONObject obj2 = new JSONObject(obj1.toString());
+                        JSONObject obj2 = (JSONObject)array.getJSONObject(i);
                         WeiXinFriend friend = new WeiXinFriend();
                         friend.nameId = obj2.getString("UserName");
                         friend.nickName = obj2.getString("NickName");

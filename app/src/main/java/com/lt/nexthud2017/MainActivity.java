@@ -18,6 +18,7 @@ import com.lt.nexthud2017.base.FunctionNavigation;
 import com.lt.nexthud2017.music.MusicFragment;
 import com.lt.nexthud2017.music.MusicViewModel;
 import com.lt.nexthud2017.weixin.WeiXinFragment;
+import com.lt.nexthud2017.weixin.WeiXinViewModel;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -39,6 +40,7 @@ public class MainActivity extends SerialPortActivity {
 
     private MusicViewModel musicViewModel;
     private AddressViewModel addressViewModel;
+    private WeiXinViewModel weiXinViewModel;
 
     public static Boolean isMusicPlayedBoolean = false;
     private static ViewPager  viewPager;
@@ -105,6 +107,9 @@ public class MainActivity extends SerialPortActivity {
 
         addressViewModel = new AddressViewModel(this);
         addressViewModel.setAddressFragment(addressFragment);
+
+        weiXinViewModel = new WeiXinViewModel(this);
+        weiXinViewModel.setWeiXinFragment(weiXinFragment);
     }
 
     @Override
@@ -112,6 +117,7 @@ public class MainActivity extends SerialPortActivity {
         super.onResume();
         music.setMusicViewModel(musicViewModel);
         addressFragment.setAddressViewModel(addressViewModel);
+        weiXinFragment.setWeiXinViewModel(weiXinViewModel);
     }
 
     private void initialSpeech(){

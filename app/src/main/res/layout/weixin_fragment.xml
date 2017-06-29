@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="weixin"
+            type="com.lt.nexthud2017.weixin.WeiXinViewModel"/>
+    </data>
+<AbsoluteLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+
+
+    <ImageView
+        android:id="@+id/qrcode"
+        android:layout_width="420dp"
+        android:layout_height="290dp"
+        android:layout_x="30dip"
+        android:layout_y="0dip"
+        android:src="@drawable/weixin"  />
+
+
+    <ListView
+        android:id="@+id/weixinList"
+        android:rotationY="180"
+        android:layout_width="460dip"
+        android:layout_x="0dip"
+        android:layout_y="68dip"
+        android:layout_height="160dp"
+        android:scrollbarSize="5dp"
+        android:scrollbars ="vertical"
+        android:divider="@color/item_focuse"
+        android:scrollbarThumbVertical="@drawable/scrollbar_vertical_track"
+        >
+    </ListView>
+
+</AbsoluteLayout>
+</layout>

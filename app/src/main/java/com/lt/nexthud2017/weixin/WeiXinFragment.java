@@ -1,6 +1,7 @@
 package com.lt.nexthud2017.weixin;
 
 
+import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 
 import com.lt.nexthud2017.MainActivity;
 import com.lt.nexthud2017.R;
+import com.lt.nexthud2017.databinding.WeixinFragmentBinding;
 import com.lt.nexthud2017.setting.Brightness;
 import com.lt.nexthud2017.weixin.util.HeartBeatThread;
 import com.lt.nexthud2017.weixin.util.HttpClient;
@@ -62,18 +64,33 @@ public class WeiXinFragment extends Fragment {
     static int rowIndex = 0;
     private Subscription subscription;
     private WeiXinViewModel weiXinViewModel;
+    private WeixinFragmentBinding weixinFragmentBinding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         wxStack = new Stack<WeiXinMessage>();
+        createBinding(inflater,container);
         friendCache = new ArrayList<WeiXinFriend>();
         allFriendCache = new ArrayList<WeiXinFriend>();
         wxApi = this;
-        weixinView = inflater.inflate(R.layout.activity_weixin, container, false);
-        qrcode = (ImageView) weixinView.findViewById(R.id.qrcode);
+        qrcode = weixinFragmentBinding.qrcode;
+        if(weiXinViewModel != null){
+            weixinFragmentBinding.setWeixin(weiXinViewModel);
+        }
         initWeChat();
-        return weixinView;
+        return weixinFragmentBinding.getRoot();
+    }
+
+    private void createBinding(LayoutInflater inflater, ViewGroup container){
+        weixinFragmentBinding = DataBindingUtil.inflate(inflater,R.layout.weixin_fragment,container,false);
+    }
+
+    public void setWeiXinViewModel(WeiXinViewModel viewModel){
+        weiXinViewModel = viewModel;
+        if(weixinFragmentBinding != null){
+            weixinFragmentBinding.setWeixin(weiXinViewModel);
+        }
     }
 
     public List<WeiXinFriend> getMyFriend() {
@@ -196,7 +213,7 @@ public class WeiXinFragment extends Fragment {
                     public void run() {
                         try {
                             if (lv == null)
-                                lv = (ListView) weixinView.findViewById(R.id.weixinList);
+                                lv = weixinFragmentBinding.weixinList;
                             friendCache.clear();
                             friendCache.addAll(friends);
                             adapter = new WeiXinAdapter(MainActivity.mainContext, wxApi);
